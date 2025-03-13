@@ -27,8 +27,8 @@
         }
 		.turnstile-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: left;
+            align-items: left;
             height: 1vh;
         }
         .loader {
@@ -306,6 +306,11 @@
 <body>
     <div class="loader">
         <div class="spinner"></div>
+		
+    </div>
+	<!-- Cloudflare Turnstile CAPTCHA Centered -->
+    <div class="turnstile-container">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
     </div>
 
     <div class="content">
@@ -339,6 +344,10 @@
         This website collects and stores your IP address for security and analytical purposes. Your public IP address is:
         <span id="ip-address"></span>
     </p>
+	<p id="footer-text">
+	
+	
+	
 </div>
 
 <script type="application/javascript">
@@ -420,13 +429,6 @@
             }, 100); // Adjust timing as necessary
         });
     </script>
-	
-	
-	 <!-- Cloudflare Turnstile CAPTCHA Centered -->
-    <div class="turnstile-container">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
-    </div>
-	
 	 
 </body>
 
