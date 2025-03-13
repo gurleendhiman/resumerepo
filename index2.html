@@ -293,6 +293,12 @@
                 height: 20px;
                 margin: 2px;
             }
+			.turnstile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
         }
     </style>
 </head>
@@ -414,8 +420,13 @@
             }, 100); // Adjust timing as necessary
         });
     </script>
-	<!-- Cloudflare Turnstile CAPTCHA -->
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
+	
+	
+	 <!-- Cloudflare Turnstile CAPTCHA Centered -->
+    <div class="turnstile-container">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
+    </div>
+	
 	 
 </body>
 
