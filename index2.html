@@ -27,9 +27,9 @@
         }
 		.turnstile-container {
             display: flex;
-            justify-content: left;
+            justify-content: space-evenly;
             align-items: left;
-            height: 1vh;
+            height: 5vh;
         }
         .loader {
             position: fixed;
@@ -246,7 +246,7 @@
 			border-radius: 50%;
 			border: 4px solid rgba(0, 0, 0, 0.1);
 			border-top-color: #333;
-			animation: spin 0.5s linear infinite;
+			animation: spin 2.5s linear infinite;
 			z-index: 1500; /* Ensure it's above other elements */
 		}
 		@keyframes spin {
@@ -304,14 +304,13 @@
 </head>
 
 <body>
+	
     <div class="loader">
+	
         <div class="spinner"></div>
 		
     </div>
-	<!-- Cloudflare Turnstile CAPTCHA Centered -->
-    <div class="turnstile-container">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
-    </div>
+	
 
     <div class="content">
         <h1>Hello. I'm <a target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none"
@@ -333,7 +332,13 @@
                 onclick="window.open('mailto:GurleenDhiman<gurleendhiman@gmail.com>');"><i class="fa fa-envelope"></i>
                 Email</button>
         </div>
+		
         <div id="iframeHolder"></div>
+		<!-- Cloudflare Turnstile CAPTCHA Centered -->
+    <div class="turnstile-container">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
+    </div>
+
     </div>
 		
 		
@@ -343,21 +348,13 @@
     <p id="footer-text">
         This website collects and stores your IP address for security and analytical purposes. Your public IP address is:
         <span id="ip-address"></span>
+		
     </p>
 	<p id="footer-text">
-	
-	
-	
+		
 </div>
 
 <script type="application/javascript">
-
-
-
-
-
-
-
 
     function getIP(json) {
         document.getElementById("ip-address").textContent = json.ip;
