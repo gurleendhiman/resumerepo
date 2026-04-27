@@ -23,10 +23,6 @@
       --ac-g: rgba(124,106,247,0.2);
       --ac-s: rgba(124,106,247,0.13);
       --E: cubic-bezier(0.4,0,0.2,1);
-      --resume-color: #7c6af7;
-      --cover-color: #f87171;
-      --linkedin-color: #0e76a8;
-      --email-color: #4ade80;
     }
     [data-theme="light"] {
       --bg: #f0ede7;
@@ -54,7 +50,6 @@
       position: relative;
     }
 
-    /* Side canvases for animated dots */
     .side-canvas {
       position: fixed;
       top: 0;
@@ -65,102 +60,42 @@
     }
     .side-left { left: 0; }
     .side-right { right: 0; }
-    .side-canvas canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+    .side-canvas canvas { width: 100%; height: 100%; display: block; }
 
-    @media (max-width: 1200px) {
-      .side-canvas { width: 20vw; }
-    }
-    @media (max-width: 900px) {
-      .side-canvas { display: none; }
-      body { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 1200px) { .side-canvas { width: 20vw; } }
+    @media (max-width: 900px) { .side-canvas { display: none; } body { grid-template-columns: 1fr; } }
 
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(110px);
-    }
-    .orb1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(124,106,247,.14) 0%, transparent 70%);
-      top: -150px;
-      left: -150px;
-    }
-    .orb2 {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(96,165,250,.09) 0%, transparent 70%);
-      bottom: -90px;
-      right: -90px;
-    }
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(110px); }
+    .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,106,247,.14) 0%, transparent 70%); top: -150px; left: -150px; }
+    .orb2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(96,165,250,.09) 0%, transparent 70%); bottom: -90px; right: -90px; }
 
     .theme-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 200;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--card);
-      border: 1px solid var(--card-b);
-      color: var(--t2);
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(16px);
-      transition: all .2s var(--E);
+      position: fixed; top: 20px; right: 20px; z-index: 200;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--card-b);
+      color: var(--t2); font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(16px); transition: all .2s var(--E);
     }
     .theme-btn:hover { border-color: var(--card-bh); color: var(--t1); transform: scale(1.05); }
 
     .main-card {
-      position: relative;
-      z-index: 10;
-      grid-column: 2;
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--card-b);
-      border-radius: 32px;
-      padding: 48px 52px;
-      backdrop-filter: blur(24px);
-      opacity: 0;
-      transform: translateY(28px);
-      animation: rise .65s .2s var(--E) forwards;
-      margin: 2rem 0;
+      position: relative; z-index: 10; grid-column: 2;
+      width: 100%; background: var(--card); border: 1px solid var(--card-b);
+      border-radius: 32px; padding: 48px 52px;
+      backdrop-filter: blur(24px); opacity: 0; transform: translateY(28px);
+      animation: rise .65s .2s var(--E) forwards; margin: 2rem 0;
     }
     @keyframes rise { to { opacity: 1; transform: none; } }
 
-    /* Profile */
     .profile-row { display: flex; align-items: center; gap: 28px; margin-bottom: 32px; flex-wrap: wrap; }
     .avatar {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      border: 2.5px solid var(--ac-s);
-      box-shadow: 0 0 0 5px var(--ac-g);
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--ac) 0%, #60a5fa 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      color: white;
+      width: 88px; height: 88px; border-radius: 50%; flex-shrink: 0;
+      border: 2.5px solid var(--ac-s); box-shadow: 0 0 0 5px var(--ac-g);
+      overflow: hidden; background: linear-gradient(135deg, var(--ac) 0%, #60a5fa 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 42px; color: white;
     }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
     .name-block { flex: 1; }
     .greeting { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--t3); margin-bottom: 7px; }
     h1 { font-family: 'DM Serif Display', serif; font-size: 2.3rem; font-weight: 400; line-height: 1.08; margin-bottom: 6px; }
@@ -171,9 +106,8 @@
     .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
     .tag {
       font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 100px;
-      border: 1px solid var(--card-b); color: var(--t2);
-      background: rgba(255,255,255,.025);
+      padding: 5px 14px; border-radius: 100px; border: 1px solid var(--card-b);
+      color: var(--t2); background: rgba(255,255,255,.025);
       opacity: 0; animation: rise .45s forwards;
     }
     .tag:nth-child(1) { animation-delay: .55s; }
@@ -184,8 +118,7 @@
     .bio { font-size: 1rem; line-height: 1.82; color: var(--t2); font-weight: 300; margin-bottom: 34px; }
     hr { border: none; border-top: 1px solid var(--card-b); margin: 0 0 30px; }
 
-    /* Action Buttons with individual colors */
-    .actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    .actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
     .btn {
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
       padding: 18px 12px; border-radius: 18px; border: 1px solid var(--card-b);
@@ -199,13 +132,9 @@
     .btn:nth-child(2) { animation-delay: .6s; }
     .btn:nth-child(3) { animation-delay: .7s; }
     .btn:nth-child(4) { animation-delay: .8s; }
+    .btn:nth-child(5) { animation-delay: .85s; }
     .btn:hover { border-color: var(--bc, var(--ac)); background: rgba(124,106,247,.1); transform: translateY(-2px); }
-    .btn-ico { 
-      width: 42px; height: 42px; border-radius: 12px; 
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
-      transition: all .2s;
-    }
-    /* Individual button icon colors */
+    .btn-ico { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all .2s; }
     .btn-resume .btn-ico { background: rgba(124,106,247,0.15); color: #7c6af7; }
     .btn-resume:hover .btn-ico { background: rgba(124,106,247,0.3); }
     .btn-cover .btn-ico { background: rgba(248,113,113,0.15); color: #f87171; }
@@ -214,10 +143,10 @@
     .btn-linkedin:hover .btn-ico { background: rgba(14,118,168,0.3); }
     .btn-email .btn-ico { background: rgba(74,222,128,0.15); color: #4ade80; }
     .btn-email:hover .btn-ico { background: rgba(74,222,128,0.3); }
-    
+    .btn-call .btn-ico { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .btn-call:hover .btn-ico { background: rgba(34,197,94,0.3); }
     .btn-lbl { font-size: .82rem; color: var(--t2); }
 
-    /* Viewer */
     .viewer { max-height: 0; overflow: hidden; transition: max-height .5s var(--E), opacity .4s, margin-top .4s; opacity: 0; margin-top: 0; border-radius: 14px; }
     .viewer.open { max-height: 85vh; opacity: 1; margin-top: 16px; border: 1px solid var(--card-b); }
     .viewer-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; background: rgba(255,255,255,.03); border-bottom: 1px solid var(--card-b); font-size: 12.5px; color: var(--t2); }
@@ -225,16 +154,13 @@
     .viewer-bar button:hover { color: var(--t1); background: rgba(255,255,255,.08); }
     .viewer iframe { display: block; width: 100%; height: 75vh; border: none; }
 
-    /* Chatbot */
     .chat-section { margin-top: 28px; }
     .chat-toggle {
       width: 100%; display: flex; align-items: center; gap: 14px;
-      padding: 18px 22px; border-radius: 20px;
-      border: 1px solid var(--card-b); background: rgba(255,255,255,.025);
-      color: var(--t1); font-family: 'DM Sans', sans-serif;
-      cursor: pointer; text-align: left;
-      transition: all .2s var(--E);
-      opacity: 0; animation: rise .45s .9s forwards;
+      padding: 18px 22px; border-radius: 20px; border: 1px solid var(--card-b);
+      background: rgba(255,255,255,.025); color: var(--t1);
+      font-family: 'DM Sans', sans-serif; cursor: pointer; text-align: left;
+      transition: all .2s var(--E); opacity: 0; animation: rise .45s .9s forwards;
     }
     .chat-toggle:hover { border-color: var(--ac); background: rgba(124,106,247,.08); }
     .chat-toggle.open { border-color: var(--ac); background: rgba(124,106,247,.1); }
@@ -246,7 +172,7 @@
     .chat-toggle.open .ct-arr { transform: rotate(180deg); }
 
     .chat-box { max-height: 0; overflow: hidden; transition: max-height .55s var(--E), opacity .4s, margin-top .4s; opacity: 0; margin-top: 0; }
-    .chat-box.open { max-height: 650px; opacity: 1; margin-top: 12px; }
+    .chat-box.open { max-height: 750px; opacity: 1; margin-top: 12px; }
     .chat-inner { border: 1px solid var(--card-b); border-radius: 20px; overflow: hidden; background: rgba(255,255,255,.018); }
 
     .chat-greeting { padding: 14px 18px; border-bottom: 1px solid var(--card-b); display: flex; align-items: center; gap: 10px; background: rgba(124,106,247,.06); }
@@ -255,7 +181,7 @@
     .chat-greeting span { font-size: .82rem; color: var(--t2); }
     .chat-greeting strong { color: var(--t1); }
 
-    .chat-msgs { padding: 18px; overflow-y: auto; max-height: 400px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
+    .chat-msgs { padding: 18px; overflow-y: auto; max-height: 450px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
     .chat-msgs::-webkit-scrollbar { width: 4px; }
     .chat-msgs::-webkit-scrollbar-track { background: transparent; }
     .chat-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
@@ -264,20 +190,21 @@
     @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     .msg.user { flex-direction: row-reverse; align-self: flex-end; max-width: 88%; }
     .msg.ai { max-width: 92%; }
-    .msg-bubble { padding: 12px 16px; border-radius: 18px; font-size: .875rem; line-height: 1.6; border: 1px solid var(--card-b); }
+    .msg-bubble { padding: 12px 16px; border-radius: 18px; font-size: .875rem; line-height: 1.6; border: 1px solid var(--card-b); white-space: pre-wrap; word-break: break-word; }
     .msg.ai .msg-bubble { background: rgba(255,255,255,.03); border-radius: 4px 16px 16px 16px; }
     .msg.user .msg-bubble { background: var(--ac); color: #fff; border-color: transparent; border-radius: 16px 4px 16px 16px; }
     .msg-av { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; font-size: 13px; background: var(--ac-s); color: var(--ac); }
 
-    .starters { display: flex; flex-direction: column; gap: 8px; }
-    .starter-label { font-size: 10px; color: var(--t3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
+    .starters-container { margin-top: 12px; }
+    .starters-label { font-size: 10px; color: var(--t3); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 6px; }
+    .starters-grid { display: flex; flex-wrap: wrap; gap: 8px; }
     .starter {
-      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--card-b);
-      background: transparent; color: var(--t2); font-family: 'DM Sans', sans-serif;
-      font-size: .82rem; cursor: pointer; text-align: left;
+      padding: 8px 14px; border-radius: 20px; border: 1px solid var(--card-b);
+      background: rgba(124,106,247,0.08); color: var(--t2); font-family: 'DM Sans', sans-serif;
+      font-size: .75rem; cursor: pointer; text-align: left;
       transition: all .2s var(--E);
     }
-    .starter:hover { border-color: var(--ac); color: var(--t1); background: rgba(124,106,247,.07); }
+    .starter:hover { border-color: var(--ac); color: var(--t1); background: rgba(124,106,247,.2); transform: translateY(-1px); }
 
     .chat-foot { padding: 12px 14px; border-top: 1px solid var(--card-b); display: flex; gap: 10px; }
     .chat-input {
@@ -300,62 +227,26 @@
     .typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--t3); animation: blink 1.2s infinite; }
     .typing span:nth-child(2) { animation-delay: .2s; }
     .typing span:nth-child(3) { animation-delay: .4s; }
-    @keyframes blink { 0%,80%,100% { opacity: .25; } 40% { opacity: 1; } }
+    @keyframes blink { 0%,80%,100% { opacity: .25; } 30% { opacity: 1; } }
 
-    /* Footer IP Notice */
     .ip-footer {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(12, 18, 34, 0.85);
-      backdrop-filter: blur(20px);
-      border-radius: 48px;
-      padding: 0.7rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      font-size: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.2);
-      z-index: 1100;
-      transition: opacity 0.4s ease, visibility 0.3s;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      font-family: 'DM Sans', sans-serif;
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: var(--card); backdrop-filter: blur(20px); border-radius: 40px;
+      padding: 0.4rem 1rem; display: flex; align-items: center; gap: 0.75rem;
+      flex-wrap: nowrap; justify-content: center; font-size: 0.7rem;
+      border: 1px solid var(--card-b); box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1100; transition: opacity 0.4s ease, visibility 0.3s;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      font-family: 'DM Sans', sans-serif; white-space: nowrap;
     }
-    .ip-footer.show {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
+    .ip-footer.show { opacity: 1; visibility: visible; pointer-events: auto; }
     .footer-close {
-      background: rgba(255,70,70,0.4);
-      border-radius: 100%;
-      width: 24px;
-      height: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 14px;
+      background: rgba(255,70,70,0.5); border-radius: 50%; width: 20px; height: 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; cursor: pointer; transition: 0.2s; color: var(--t2);
     }
-    .footer-close:hover {
-      background: #ff4d4d;
-      color: white;
-    }
-    #ip-address {
-      font-weight: 600;
-      background: rgba(0,0,0,0.3);
-      padding: 0.1rem 0.5rem;
-      border-radius: 20px;
-      font-family: monospace;
-    }
+    .footer-close:hover { background: #ff4d4d; color: white; }
+    #ip-address { font-weight: 600; background: rgba(124,106,247,0.2); padding: 0.1rem 0.4rem; border-radius: 20px; font-family: monospace; font-size: 0.7rem; }
 
     .card-foot { margin-top: 28px; text-align: center; font-size: 12px; color: var(--t3); opacity: 0; animation: rise .45s 1.1s forwards; }
     .card-foot a { color: var(--t3); text-decoration: none; transition: color .2s; }
@@ -376,8 +267,9 @@
       .actions { grid-template-columns: repeat(2, 1fr); }
       .profile-row { gap: 18px; }
       .avatar { width: 68px; height: 68px; font-size: 32px; }
-      .ip-footer { font-size: 0.65rem; padding: 0.5rem 1rem; gap: 0.5rem; }
       .viewer iframe { height: 60vh; }
+      .ip-footer { font-size: 0.6rem; padding: 0.3rem 0.8rem; gap: 0.5rem; white-space: nowrap; }
+      #ip-address { font-size: 0.6rem; }
     }
     @media (max-width: 480px) {
       .main-card { padding: 24px 18px; }
@@ -388,13 +280,8 @@
 <body>
   <div id="loader"><div class="dots"><span></span><span></span><span></span></div></div>
   
-  <!-- Side Canvases for Animated Dots -->
-  <div class="side-canvas side-left">
-    <canvas id="cvLeft"></canvas>
-  </div>
-  <div class="side-canvas side-right">
-    <canvas id="cvRight"></canvas>
-  </div>
+  <div class="side-canvas side-left"><canvas id="cvLeft"></canvas></div>
+  <div class="side-canvas side-right"><canvas id="cvRight"></canvas></div>
   
   <div class="orb orb1"></div><div class="orb orb2"></div>
   <button class="theme-btn" id="themeBtn"><i class="fas fa-moon"></i></button>
@@ -439,17 +326,17 @@
         <div class="btn-ico"><i class="fas fa-envelope"></i></div>
         <span class="btn-lbl">Email</span>
       </a>
+      <a class="btn btn-call" href="tel:+16476862120">
+        <div class="btn-ico"><i class="fas fa-phone-alt"></i></div>
+        <span class="btn-lbl">Call</span>
+      </a>
     </div>
 
     <div class="viewer" id="viewer">
-      <div class="viewer-bar">
-        <span id="viewerLbl">Document</span>
-        <button onclick="closeViewer()"><i class="fas fa-xmark"></i></button>
-      </div>
+      <div class="viewer-bar"><span id="viewerLbl">Document</span><button onclick="closeViewer()"><i class="fas fa-xmark"></i></button></div>
       <iframe id="viewerFrame" src="" title="Document viewer" allow="autoplay"></iframe>
     </div>
 
-    <!-- Chatbot Section -->
     <div class="chat-section">
       <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
         <div class="ct-ico"><i class="fas fa-robot"></i></div>
@@ -462,22 +349,10 @@
 
       <div class="chat-box" id="chatBox">
         <div class="chat-inner">
-          <div class="chat-greeting">
-            <div class="g-dot"></div>
-            <span><strong>Resume Assistant</strong> — I know everything from Gurleen's professional background. Ask me anything!</span>
-          </div>
-
+          <div class="chat-greeting"><div class="g-dot"></div><span><strong>Resume Assistant</strong> — I know everything from Gurleen's professional background. Ask me anything!</span></div>
           <div class="chat-msgs" id="chatMsgs">
-            <div class="starters" id="starters">
-              <p class="starter-label">Suggested questions</p>
-              <button class="starter" onclick="sendStarter(this)">What certifications do you hold?</button>
-              <button class="starter" onclick="sendStarter(this)">Tell me about your work experience</button>
-              <button class="starter" onclick="sendStarter(this)">What technical skills do you have?</button>
-              <button class="starter" onclick="sendStarter(this)">How can I contact you?</button>
-              <button class="starter" onclick="sendStarter(this)">What is your location and availability?</button>
-            </div>
+            <!-- Messages will appear here -->
           </div>
-
           <div class="chat-foot">
             <textarea class="chat-input" id="chatInput" placeholder="Ask about experience, skills, certifications..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}" oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,110)+'px'"></textarea>
             <button class="chat-send" id="sendBtn" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
@@ -489,17 +364,14 @@
     <p class="card-foot">Cambridge, ON · Remote &amp; hybrid friendly · <a href="https://ca.linkedin.com/in/gurleendhiman" target="_blank">LinkedIn</a></p>
   </div>
 
-  <!-- IP Footer Notice -->
   <div class="ip-footer" id="ipFooter">
-    <span><i class="fas fa-shield-alt"></i> This website collects and stores your IP address for security and analytical purposes</span>
-    <span>Your public IP: <span id="ip-address">—</span></span>
+    <span><i class="fas fa-shield-alt"></i> IP collected for security</span>
+    <span id="ip-address">—</span>
     <div class="footer-close" id="closeFooterBtn">✕</div>
   </div>
 
   <script>
-    // ============================================================
-    // ANIMATION CODE FROM myresume.html
-    // ============================================================
+    // Animation from myresume.html
     (function() {
       const IDS = ['cvLeft', 'cvRight'];
       const mouse = { x: -9999, y: -9999 };
@@ -566,7 +438,7 @@
     })();
 
     // ============================================================
-    // RESUME KNOWLEDGE BASE
+    // RESUME KNOWLEDGE BASE - Complete
     // ============================================================
     const resumeData = {
       name: "Gurleen Dhiman",
@@ -584,20 +456,22 @@
         "MCSA – Windows Server 2008 Active Directory (Apr 2011)"
       ],
       skills: {
-        endpoint: "Microsoft Defender, Sentinel One, Field Effect MDR",
-        network: "FortiGate, Sophos XG, Cisco ASA, Palo Alto, VPN, IDS/IPS, SD-WAN, VLANs",
-        identity: "Azure AD, Intune, Conditional Access, MFA, SSO",
-        cloud: "Microsoft Azure, AWS IAM, O365, hybrid cloud",
-        backup: "Veeam, Datto, DR planning and validation",
-        virtualization: "VMware, Hyper-V, ESX, Windows Server, MDM, G-Suite"
+        "🔐 Endpoint & Threat Management": "Microsoft Defender, Sentinel One, Field Effect MDR",
+        "🛡️ Network Security": "FortiGate, Sophos XG, Cisco ASA, Palo Alto, VPN, IDS/IPS, SD-WAN, VLANs",
+        "👤 Identity & Access": "Azure AD, Intune, Conditional Access, MFA, SSO, Zero Trust",
+        "☁️ Cloud Platforms": "Microsoft Azure, AWS IAM, O365, hybrid cloud",
+        "💾 Backup & DR": "Veeam, Datto, DR planning and validation",
+        "⚡ Virtualization": "VMware, Hyper-V, ESX, Windows Server, MDM, G-Suite",
+        "📧 Email Security": "Exchange Online Protection, Barracuda, anti-phishing",
+        "📋 Compliance": "NIST, ISO 27001, HIPAA, GDPR, ITIL"
       },
       experience: [
-        { title: "Technology Alignment Specialist", company: "MSP Corp.", location: "Guelph, ON", period: "Oct 2021 – Present", details: "Network security, NIST-aligned audits, Intune/MDM/Conditional Access, Zero Trust, vulnerability scanning, DR exercises." },
+        { title: "Technology Alignment Specialist", company: "MSP Corp.", location: "Guelph, ON", period: "Oct 2021 – Present", details: "Network security, NIST-aligned audits, Intune/MDM/Conditional Access, Zero Trust, vulnerability scanning, DR exercises, client audit reports." },
         { title: "Business Operations Support Lead", company: "TD Bank", location: "Mississauga, ON", period: "Jun 2021 – Oct 2021", details: "SLA management, work standards, asset maintenance, knowledge transfer." },
-        { title: "IT Manager", company: "Unicus Technologies", location: "Dubai, UAE", period: "Feb 2016 – Apr 2020", details: "Infrastructure planning, MSP support, WAN/SD-WAN, firewall/VPN/endpoint security, GDPR compliance." },
-        { title: "Manager IT Services", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2015 – Jan 2016", details: "ISO 27001 ISMS, risk assessments, HIPAA support, ITIL training." },
-        { title: "Associate Specialist Systems", company: "Roquette Riddhi Siddhi", location: "Ahmedabad, India", period: "Jul 2014 – Feb 2015", details: "Server/Network/ERP monitoring, Exchange Server, O365 security." },
-        { title: "Sr. System Administrator", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2011 – Jul 2014", details: "Active Directory, Group Policy, O365 migrations for 15+ clients, support for 200+ users." }
+        { title: "IT Manager", company: "Unicus Technologies", location: "Dubai, UAE", period: "Feb 2016 – Apr 2020", details: "Infrastructure planning, MSP support, WAN/SD-WAN (Meraki/Cisco), firewall/VPN/endpoint security, GDPR compliance." },
+        { title: "Manager IT Services", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2015 – Jan 2016", details: "ISO 27001 ISMS, risk assessments, HIPAA support, ITIL training, Service Desk/Incident/Change Management." },
+        { title: "Associate Specialist Systems", company: "Roquette Riddhi Siddhi", location: "Ahmedabad, India", period: "Jul 2014 – Feb 2015", details: "Server/Network/ERP monitoring, Exchange Server, O365 security policies." },
+        { title: "Sr. System Administrator", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2011 – Jul 2014", details: "Active Directory, Group Policy, O365, G-Suite, MDM, O365 migrations for 15+ clients, Level 2/3 support for 200+ users." }
       ],
       education: [
         "ACHNP – Advanced Diploma in Hardware & Networking Professional, IIHT Ahmedabad (2009–2011)",
@@ -606,66 +480,193 @@
       availability: "Open to full-time, contract, remote, hybrid, and on-site roles in Canada."
     };
 
+    // Answer generation function
     function getBotResponse(question) {
       const q = question.toLowerCase().trim();
-      if (q.includes('certif')) return `📜 ${resumeData.name} holds: ${resumeData.certifications.join(', ')}.`;
-      if (q.includes('experience')) {
-        let expText = `${resumeData.name} has ${resumeData.experience.length} roles:\n`;
-        resumeData.experience.forEach(exp => { expText += `\n• ${exp.title} at ${exp.company} (${exp.period}): ${exp.details}`; });
+      
+      if (q.includes('certif')) {
+        return `📜 **Certifications**\n\n${resumeData.certifications.map(c => `• ${c}`).join('\n')}`;
+      }
+      
+      if (q.includes('experience') || q.includes('work') || q.includes('role')) {
+        let expText = `💼 **Work Experience**\n\n`;
+        resumeData.experience.forEach(exp => {
+          expText += `**${exp.title}** at ${exp.company}\n📅 ${exp.period} | 📍 ${exp.location}\n${exp.details}\n\n`;
+        });
         return expText;
       }
-      if (q.includes('skill')) return `⚙️ Technical Skills:\n• Endpoint: ${resumeData.skills.endpoint}\n• Network: ${resumeData.skills.network}\n• Identity: ${resumeData.skills.identity}\n• Cloud: ${resumeData.skills.cloud}`;
-      if (q.includes('contact')) return `📫 Contact: ${resumeData.email} | ${resumeData.phone} | LinkedIn: ${resumeData.linkedin}`;
-      if (q.includes('location')) return `📍 ${resumeData.name} is based in ${resumeData.location}. ${resumeData.availability}`;
-      return `🤔 Try asking about: certifications, experience, skills, contact, location, or availability.`;
+      
+      if (q.includes('skill') || q.includes('technic') || q.includes('expertise') || q.includes('tool')) {
+        let skillText = `⚙️ **Technical Skills & Expertise**\n\n`;
+        for (const [category, items] of Object.entries(resumeData.skills)) {
+          skillText += `${category}: ${items}\n\n`;
+        }
+        return skillText;
+      }
+      
+      if (q.includes('contact')) {
+        return `📫 **Contact Information**\n\n• Email: ${resumeData.email}\n• Phone: ${resumeData.phone}\n• LinkedIn: ${resumeData.linkedin}\n\n💡 You can also click the **Call** button above to call directly from your browser!`;
+      }
+      
+      if (q.includes('call') || q.includes('phone')) {
+        return `📞 **Call Gurleen directly**\n\n• Phone: ${resumeData.phone}\n• Click the **Call** button above to dial from your browser (works on mobile and desktop calling apps)`;
+      }
+      
+      if (q.includes('location') || q.includes('where') || q.includes('based')) {
+        return `📍 **Location & Availability**\n\n${resumeData.name} is based in ${resumeData.location}.\n\n${resumeData.availability}`;
+      }
+      
+      if (q.includes('availability') || q.includes('open') || q.includes('remote')) {
+        return `💼 **Availability**\n\n${resumeData.availability}`;
+      }
+      
+      if (q.includes('summary') || q.includes('about') || q.includes('who is')) {
+        return `👔 **Professional Summary**\n\n${resumeData.summary}`;
+      }
+      
+      if (q.includes('azure') || q.includes('cloud')) {
+        return `☁️ **Cloud Expertise**\n\n${resumeData.name} is Microsoft Azure Certified with expertise in Azure AD, Intune, Conditional Access, hybrid cloud, and cloud security frameworks.`;
+      }
+      
+      if (q.includes('security') || q.includes('cyber')) {
+        return `🔒 **Cybersecurity Expertise**\n\n• NIST-aligned security audits\n• Zero Trust architecture\n• Vulnerability scanning & management\n• Firewall management (FortiGate, Palo Alto, Cisco ASA)\n• Endpoint protection (Defender, Sentinel One)\n• Compliance frameworks (ISO, HIPAA, GDPR)`;
+      }
+      
+      if (q.includes('education')) {
+        return `🎓 **Education**\n\n${resumeData.education.map(e => `• ${e}`).join('\n')}`;
+      }
+      
+      return `🤔 I'd love to help! Try asking me about:\n\n• Certifications\n• Work experience\n• Technical skills\n• Contact & location\n• Availability\n• Cybersecurity expertise\n• Education\n\nOr click any of the suggestion buttons below!`;
     }
 
-    // Chat UI Logic
-    let chatOpen = false, busy = false;
+    // ============================================================
+    // CHAT UI - FIXED with working suggestions
+    // ============================================================
+    let chatOpen = false;
+    let busy = false;
+    let isFirstMessage = true;
+
     function toggleChat() {
       chatOpen = !chatOpen;
       document.getElementById('chatBox').classList.toggle('open', chatOpen);
       document.getElementById('chatToggle').classList.toggle('open', chatOpen);
-      if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 300);
+      if (chatOpen) {
+        setTimeout(() => document.getElementById('chatInput').focus(), 300);
+        // Add welcome message if chat is empty
+        if (document.getElementById('chatMsgs').children.length === 0) {
+          addWelcomeMessage();
+        }
+      }
     }
-    function sendStarter(btn) {
-      const startersDiv = document.getElementById('starters');
-      if (startersDiv) startersDiv.remove();
-      document.getElementById('chatInput').value = btn.textContent;
-      sendMsg();
+
+    function addWelcomeMessage() {
+      const welcomeMsg = `👋 Hi there! I'm Gurleen's resume assistant. I know everything from his professional background.\n\nAsk me about:\n• Certifications\n• Work experience\n• Technical skills\n• Contact info\n• Availability\n\nOr click any suggestion below!`;
+      addMessage('ai', welcomeMsg);
+      addSuggestions();
     }
-    function addMsg(role, text) {
+
+    function addSuggestions() {
+      const chatMsgs = document.getElementById('chatMsgs');
+      // Remove existing suggestions container if any
+      const existingContainer = document.getElementById('suggestionsContainer');
+      if (existingContainer) existingContainer.remove();
+      
+      const suggestionsContainer = document.createElement('div');
+      suggestionsContainer.id = 'suggestionsContainer';
+      suggestionsContainer.className = 'starters-container';
+      
+      suggestionsContainer.innerHTML = `
+        <div class="starters-label">
+          <i class="fas fa-lightbulb"></i> Suggested questions
+        </div>
+        <div class="starters-grid">
+          <button class="starter" data-question="What certifications do you hold?">📜 Certifications</button>
+          <button class="starter" data-question="Tell me about your work experience">💼 Work Experience</button>
+          <button class="starter" data-question="What technical skills do you have?">⚙️ Technical Skills</button>
+          <button class="starter" data-question="How can I contact you?">📧 Contact Info</button>
+          <button class="starter" data-question="Can I call you?">📞 Call Me</button>
+          <button class="starter" data-question="What is your location and availability?">📍 Location</button>
+          <button class="starter" data-question="Tell me about your cybersecurity expertise">🔒 Cybersecurity</button>
+          <button class="starter" data-question="What is your educational background?">🎓 Education</button>
+        </div>
+      `;
+      
+      // Add event listeners to all starter buttons
+      suggestionsContainer.querySelectorAll('.starter').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const question = btn.getAttribute('data-question');
+          document.getElementById('chatInput').value = question;
+          sendMsg();
+        });
+      });
+      
+      chatMsgs.appendChild(suggestionsContainer);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    function addMessage(role, text) {
       const wrap = document.getElementById('chatMsgs');
       const row = document.createElement('div');
       row.className = `msg ${role}`;
-      row.innerHTML = `<div class="msg-av"><i class="fas fa-${role === 'ai' ? 'robot' : 'user'}"></i></div><div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>`;
+      const avatarIcon = role === 'ai' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+      row.innerHTML = `
+        <div class="msg-av">${avatarIcon}</div>
+        <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
+      `;
       wrap.appendChild(row);
       wrap.scrollTop = wrap.scrollHeight;
+      return row;
     }
+
     function showTyping() {
       const wrap = document.getElementById('chatMsgs');
       const row = document.createElement('div');
-      row.id = 'typingRow'; row.className = 'msg ai';
+      row.id = 'typingRow';
+      row.className = 'msg ai';
       row.innerHTML = `<div class="msg-av"><i class="fas fa-robot"></i></div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
       wrap.appendChild(row);
       wrap.scrollTop = wrap.scrollHeight;
     }
-    function hideTyping() { const t = document.getElementById('typingRow'); if (t) t.remove(); }
+
+    function hideTyping() {
+      const t = document.getElementById('typingRow');
+      if (t) t.remove();
+    }
+
     async function sendMsg() {
       if (busy) return;
+      
       const inp = document.getElementById('chatInput');
       const text = inp.value.trim();
       if (!text) return;
-      const startersDiv = document.getElementById('starters');
-      if (startersDiv) startersDiv.remove();
-      inp.value = ''; inp.style.height = 'auto';
-      addMsg('user', text);
-      busy = true; document.getElementById('sendBtn').disabled = true; showTyping();
+      
+      // Clear input
+      inp.value = '';
+      inp.style.height = 'auto';
+      
+      // Remove suggestions container before adding user message
+      const suggestionsContainer = document.getElementById('suggestionsContainer');
+      if (suggestionsContainer) suggestionsContainer.remove();
+      
+      // Add user message
+      addMessage('user', text);
+      
+      busy = true;
+      document.getElementById('sendBtn').disabled = true;
+      showTyping();
+      
+      // Simulate thinking delay
       setTimeout(() => {
         hideTyping();
-        addMsg('ai', getBotResponse(text));
-        busy = false; document.getElementById('sendBtn').disabled = false; inp.focus();
-      }, 400);
+        const response = getBotResponse(text);
+        addMessage('ai', response);
+        // Add suggestions back after response
+        addSuggestions();
+        busy = false;
+        document.getElementById('sendBtn').disabled = false;
+        inp.focus();
+      }, 500);
     }
 
     // Viewer Functions
@@ -676,6 +677,7 @@
       v.classList.add('open');
       setTimeout(() => v.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
     }
+    
     function closeViewer() {
       const v = document.getElementById('viewer');
       v.classList.remove('open');
@@ -689,6 +691,7 @@
     if (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches) dark = false;
     applyTheme();
     themeBtn.addEventListener('click', () => { dark = !dark; localStorage.setItem('theme', dark ? 'dark' : 'light'); applyTheme(); });
+    
     function applyTheme() {
       html.setAttribute('data-theme', dark ? 'dark' : 'light');
       themeBtn.innerHTML = dark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
@@ -709,11 +712,13 @@
       ipFooter?.classList.add('show');
       footerTimeout = setTimeout(() => ipFooter?.classList.remove('show'), 8000);
     }
+    
     closeFooter?.addEventListener('click', () => {
       ipFooter?.classList.remove('show');
       clearTimeout(footerTimeout);
       sessionStorage.setItem('footerDismissed', 'true');
     });
+    
     if (sessionStorage.getItem('footerDismissed') !== 'true') {
       setTimeout(showFooter, 2500);
     }
