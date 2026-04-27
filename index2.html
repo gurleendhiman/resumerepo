@@ -1,433 +1,725 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gurleen's Resume</title>
-    <meta name="resume-gurleen" content="Gurleen Dhiman's Resume">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="https://raw.githubusercontent.com/gurleendhiman/resume/master/favicon.ico" type="image/x-icon">
- <!-- Cloudflare Turnstile Script -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Raleway', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            position: relative;
-        }
-		.turnstile-container {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: left;
-            height: 5vh;
-        }
-        .loader {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Gurleen Dhiman — IT Leader & Cybersecurity</title>
+  <meta name="description" content="Gurleen Dhiman — IT Leader & Cybersecurity Specialist. 15+ years experience. Azure, MCITP, ITIL certified.">
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/gurleendhiman/resumerepo/refs/heads/main/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b0b0e;
+      --card: rgba(255,255,255,0.046);
+      --card-b: rgba(255,255,255,0.09);
+      --card-bh: rgba(255,255,255,0.22);
+      --t1: #f2efe9;
+      --t2: rgba(242,239,233,0.58);
+      --t3: rgba(242,239,233,0.30);
+      --ac: #7c6af7;
+      --ac-g: rgba(124,106,247,0.2);
+      --ac-s: rgba(124,106,247,0.13);
+      --E: cubic-bezier(0.4,0,0.2,1);
+      --resume-color: #7c6af7;
+      --cover-color: #f87171;
+      --linkedin-color: #0e76a8;
+      --email-color: #4ade80;
+    }
+    [data-theme="light"] {
+      --bg: #f0ede7;
+      --card: rgba(255,255,255,0.82);
+      --card-b: rgba(0,0,0,0.08);
+      --card-bh: rgba(0,0,0,0.22);
+      --t1: #18181b;
+      --t2: rgba(24,24,27,0.58);
+      --t3: rgba(24,24,27,0.32);
+      --ac-g: rgba(124,106,247,0.13);
+      --ac-s: rgba(124,106,247,0.1);
+    }
 
-        .loader .item {
-            width: 30px;
-            height: 30px;
-            margin: 5px;
-            border-radius: 50%;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--t1);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 900px) 1fr;
+      transition: background .3s var(--E), color .3s var(--E);
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .loader .item:nth-child(1) {
-            background-color: #4CAF50;
-        }
+    /* Side canvases for animated dots */
+    .side-canvas {
+      position: fixed;
+      top: 0;
+      width: 25vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .side-left { left: 0; }
+    .side-right { right: 0; }
+    .side-canvas canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-        .loader .item:nth-child(2) {
-            background-color: #476BD5;
-            animation-delay: 0.3s;
-        }
+    @media (max-width: 1200px) {
+      .side-canvas { width: 20vw; }
+    }
+    @media (max-width: 900px) {
+      .side-canvas { display: none; }
+      body { grid-template-columns: 1fr; }
+    }
 
-        .loader .item:nth-child(3) {
-            background-color: #f44336;
-            animation-delay: 0.6s;
-        }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(110px);
+    }
+    .orb1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(124,106,247,.14) 0%, transparent 70%);
+      top: -150px;
+      left: -150px;
+    }
+    .orb2 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(96,165,250,.09) 0%, transparent 70%);
+      bottom: -90px;
+      right: -90px;
+    }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: scale(0);
-                opacity: 0.7;
-            }
-            50% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+    .theme-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 200;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1px solid var(--card-b);
+      color: var(--t2);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(16px);
+      transition: all .2s var(--E);
+    }
+    .theme-btn:hover { border-color: var(--card-bh); color: var(--t1); transform: scale(1.05); }
 
-        .content {
-            display: none;
-            flex: 1;
-            text-align: center;
-            padding: 5px;
-            background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
-            animation: fadeIn 1s ease-in;
-        }
+    .main-card {
+      position: relative;
+      z-index: 10;
+      grid-column: 2;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--card-b);
+      border-radius: 32px;
+      padding: 48px 52px;
+      backdrop-filter: blur(24px);
+      opacity: 0;
+      transform: translateY(28px);
+      animation: rise .65s .2s var(--E) forwards;
+      margin: 2rem 0;
+    }
+    @keyframes rise { to { opacity: 1; transform: none; } }
 
-        h1 {
-            font-weight: 300;
-		font-size: 2rem;
-		margin: 0px 0 10px; /* Adjust the top margin to move it higher */
-        }
+    /* Profile */
+    .profile-row { display: flex; align-items: center; gap: 28px; margin-bottom: 32px; flex-wrap: wrap; }
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 2.5px solid var(--ac-s);
+      box-shadow: 0 0 0 5px var(--ac-g);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--ac) 0%, #60a5fa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      color: white;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .name-block { flex: 1; }
+    .greeting { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--t3); margin-bottom: 7px; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: 2.3rem; font-weight: 400; line-height: 1.08; margin-bottom: 6px; }
+    h1 a { color: var(--t1); text-decoration: none; transition: color .2s; }
+    h1 a:hover { color: var(--ac); }
+    .title-line { font-size: .97rem; color: var(--t2); font-weight: 300; }
 
-        p {
-			font-size: 1rem;
-            margin: 0 0 10px;
-        }
-		
-        .button-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
+    .tag {
+      font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1px solid var(--card-b); color: var(--t2);
+      background: rgba(255,255,255,.025);
+      opacity: 0; animation: rise .45s forwards;
+    }
+    .tag:nth-child(1) { animation-delay: .55s; }
+    .tag:nth-child(2) { animation-delay: .65s; }
+    .tag:nth-child(3) { animation-delay: .75s; }
+    .tag:nth-child(4) { animation-delay: .85s; }
 
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 8.75px 8.75px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .bio { font-size: 1rem; line-height: 1.82; color: var(--t2); font-weight: 300; margin-bottom: 34px; }
+    hr { border: none; border-top: 1px solid var(--card-b); margin: 0 0 30px; }
 
-        .button:hover {
-            background-color: #3e8e41;
-        }
+    /* Action Buttons with individual colors */
+    .actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    .btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      padding: 18px 12px; border-radius: 18px; border: 1px solid var(--card-b);
+      background: rgba(255,255,255,.025); color: var(--t1);
+      font-family: 'DM Sans', sans-serif; font-size: .82rem; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      transition: all .2s var(--E);
+      opacity: 0; animation: rise .45s forwards;
+    }
+    .btn:nth-child(1) { animation-delay: .5s; }
+    .btn:nth-child(2) { animation-delay: .6s; }
+    .btn:nth-child(3) { animation-delay: .7s; }
+    .btn:nth-child(4) { animation-delay: .8s; }
+    .btn:hover { border-color: var(--bc, var(--ac)); background: rgba(124,106,247,.1); transform: translateY(-2px); }
+    .btn-ico { 
+      width: 42px; height: 42px; border-radius: 12px; 
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      transition: all .2s;
+    }
+    /* Individual button icon colors */
+    .btn-resume .btn-ico { background: rgba(124,106,247,0.15); color: #7c6af7; }
+    .btn-resume:hover .btn-ico { background: rgba(124,106,247,0.3); }
+    .btn-cover .btn-ico { background: rgba(248,113,113,0.15); color: #f87171; }
+    .btn-cover:hover .btn-ico { background: rgba(248,113,113,0.3); }
+    .btn-linkedin .btn-ico { background: rgba(14,118,168,0.15); color: #0e76a8; }
+    .btn-linkedin:hover .btn-ico { background: rgba(14,118,168,0.3); }
+    .btn-email .btn-ico { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .btn-email:hover .btn-ico { background: rgba(74,222,128,0.3); }
+    
+    .btn-lbl { font-size: .82rem; color: var(--t2); }
 
-        .button1 {
-            background-color: white;
-            color: #476BD5;
-            border: 2px solid #476BD5;
-        }
+    /* Viewer */
+    .viewer { max-height: 0; overflow: hidden; transition: max-height .5s var(--E), opacity .4s, margin-top .4s; opacity: 0; margin-top: 0; border-radius: 14px; }
+    .viewer.open { max-height: 85vh; opacity: 1; margin-top: 16px; border: 1px solid var(--card-b); }
+    .viewer-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; background: rgba(255,255,255,.03); border-bottom: 1px solid var(--card-b); font-size: 12.5px; color: var(--t2); }
+    .viewer-bar button { background: none; border: none; color: var(--t2); cursor: pointer; font-size: 16px; border-radius: 6px; transition: all .2s; }
+    .viewer-bar button:hover { color: var(--t1); background: rgba(255,255,255,.08); }
+    .viewer iframe { display: block; width: 100%; height: 75vh; border: none; }
 
-        .button1:hover {
-            background-color: #476BD5;
-            color: white;
-        }
+    /* Chatbot */
+    .chat-section { margin-top: 28px; }
+    .chat-toggle {
+      width: 100%; display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px; border-radius: 20px;
+      border: 1px solid var(--card-b); background: rgba(255,255,255,.025);
+      color: var(--t1); font-family: 'DM Sans', sans-serif;
+      cursor: pointer; text-align: left;
+      transition: all .2s var(--E);
+      opacity: 0; animation: rise .45s .9s forwards;
+    }
+    .chat-toggle:hover { border-color: var(--ac); background: rgba(124,106,247,.08); }
+    .chat-toggle.open { border-color: var(--ac); background: rgba(124,106,247,.1); }
+    .ct-ico { width: 44px; height: 44px; border-radius: 14px; background: var(--ac-s); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: var(--ac); }
+    .ct-body { flex: 1; }
+    .ct-title { font-size: .95rem; font-weight: 600; display: block; }
+    .ct-sub { font-size: 11.5px; color: var(--t3); margin-top: 3px; }
+    .ct-arr { color: var(--t3); transition: transform .3s var(--E); font-size: 13px; }
+    .chat-toggle.open .ct-arr { transform: rotate(180deg); }
 
-        .button2 {
-            background-color: white;
-            color: #f44336;
-            border: 2px solid #f44336;
-        }
+    .chat-box { max-height: 0; overflow: hidden; transition: max-height .55s var(--E), opacity .4s, margin-top .4s; opacity: 0; margin-top: 0; }
+    .chat-box.open { max-height: 650px; opacity: 1; margin-top: 12px; }
+    .chat-inner { border: 1px solid var(--card-b); border-radius: 20px; overflow: hidden; background: rgba(255,255,255,.018); }
 
-        .button2:hover {
-            background-color: #f44336;
-            color: white;
-        }
+    .chat-greeting { padding: 14px 18px; border-bottom: 1px solid var(--card-b); display: flex; align-items: center; gap: 10px; background: rgba(124,106,247,.06); }
+    .g-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+    .chat-greeting span { font-size: .82rem; color: var(--t2); }
+    .chat-greeting strong { color: var(--t1); }
 
-        .button3 {
-            background-color: white;
-            color: #0e76a8;
-            border: 2px solid #0e76a8;
-        }
+    .chat-msgs { padding: 18px; overflow-y: auto; max-height: 400px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
+    .chat-msgs::-webkit-scrollbar { width: 4px; }
+    .chat-msgs::-webkit-scrollbar-track { background: transparent; }
+    .chat-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
 
-        .button3:hover {
-            background-color: #0e76a8;
-            color: white;
-        }
+    .msg { display: flex; gap: 10px; animation: msgIn .28s var(--E); }
+    @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .msg.user { flex-direction: row-reverse; align-self: flex-end; max-width: 88%; }
+    .msg.ai { max-width: 92%; }
+    .msg-bubble { padding: 12px 16px; border-radius: 18px; font-size: .875rem; line-height: 1.6; border: 1px solid var(--card-b); }
+    .msg.ai .msg-bubble { background: rgba(255,255,255,.03); border-radius: 4px 16px 16px 16px; }
+    .msg.user .msg-bubble { background: var(--ac); color: #fff; border-color: transparent; border-radius: 16px 4px 16px 16px; }
+    .msg-av { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; font-size: 13px; background: var(--ac-s); color: var(--ac); }
 
-        .button4 {
-            background-color: white;
-            color: #00A4EF;
-            border: 2px solid #00A4EF;
-        }
+    .starters { display: flex; flex-direction: column; gap: 8px; }
+    .starter-label { font-size: 10px; color: var(--t3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
+    .starter {
+      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--card-b);
+      background: transparent; color: var(--t2); font-family: 'DM Sans', sans-serif;
+      font-size: .82rem; cursor: pointer; text-align: left;
+      transition: all .2s var(--E);
+    }
+    .starter:hover { border-color: var(--ac); color: var(--t1); background: rgba(124,106,247,.07); }
 
-        .button4:hover {
-            background-color: #00A4EF;
-            color: white;
-        }
+    .chat-foot { padding: 12px 14px; border-top: 1px solid var(--card-b); display: flex; gap: 10px; }
+    .chat-input {
+      flex: 1; background: rgba(255,255,255,.04); border: 1px solid var(--card-b);
+      border-radius: 14px; padding: 11px 14px; color: var(--t1);
+      font-family: 'DM Sans', sans-serif; font-size: .88rem;
+      resize: none; outline: none; min-height: 44px; line-height: 1.5;
+    }
+    .chat-input:focus { border-color: var(--ac); }
+    .chat-send {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: var(--ac); border: none; color: #fff;
+      font-size: 15px; cursor: pointer; flex-shrink: 0;
+      transition: all .2s;
+    }
+    .chat-send:hover { background: #6b5ae0; transform: scale(1.05); }
+    .chat-send:disabled { opacity: .5; cursor: not-allowed; transform: none; }
 
-        #iframeHolder {
-            width: 100%;
-            height: 100vh; /* Adjust height as needed */
-            margin-top: 5px;
-            overflow-y: 100%; /* Enable scrolling if content exceeds height */
-        }
+    .typing { display: flex; gap: 5px; padding: 4px 2px; align-items: center; }
+    .typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--t3); animation: blink 1.2s infinite; }
+    .typing span:nth-child(2) { animation-delay: .2s; }
+    .typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes blink { 0%,80%,100% { opacity: .25; } 40% { opacity: 1; } }
 
-         .footer-container {
-            position: fixed;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto; /* Adjust width as needed */
-            height: auto; /* Adjust height as needed */
-            padding: 5px;
-            background-color: LightCoral;
-            color: white;
-            border-radius: 50px; /* Ensures the bubble shape */
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.7s ease-in-out;
-			max-width: calc(100% - 200px); /* Adjust the maximum width */
-			white-space: wrap; /* Prevent text from wrapping */
-			overflow: visible; /* Hide overflow text */
-			box-sizing: border-box; /* Include padding in width calculation */
-			margin: 10 auto;
-            font-size: clamp(.50rem, .75vw, 1vw);
-			}
-			
-			.footer-container p {
-				font-size: 0.85em; /* Use em units to keep font size consistent */
-				margin: 0.250px; /* Remove default margin */
-				overflow: visible; /* Allow text to wrap to a new line */
-			}
+    /* Footer IP Notice */
+    .ip-footer {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(12, 18, 34, 0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 48px;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+      z-index: 1100;
+      transition: opacity 0.4s ease, visibility 0.3s;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .ip-footer.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .footer-close {
+      background: rgba(255,70,70,0.4);
+      border-radius: 100%;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 14px;
+    }
+    .footer-close:hover {
+      background: #ff4d4d;
+      color: white;
+    }
+    #ip-address {
+      font-weight: 600;
+      background: rgba(0,0,0,0.3);
+      padding: 0.1rem 0.5rem;
+      border-radius: 20px;
+      font-family: monospace;
+    }
 
-        .close-btn {
-			position: absolute;
-			top: -0.5em; /* Adjust as needed */
-			right: -0.5em; /* Adjust as needed */
-			width: 1em; /* Double the width to accommodate the "X" */
-			height: 1em; /* Double the height to accommodate the "X" */
-			border-radius: 50%;
-			background-color: LightCoral;
-			display: flex;
-			justify-content: center; /* Center horizontally */
-			align-items: center; /* Center vertically */
-			cursor: pointer;
-			color: white;
-			font-size: clamp(.50rem, .75vw, 1vw);
-			}
+    .card-foot { margin-top: 28px; text-align: center; font-size: 12px; color: var(--t3); opacity: 0; animation: rise .45s 1.1s forwards; }
+    .card-foot a { color: var(--t3); text-decoration: none; transition: color .2s; }
+    .card-foot a:hover { color: var(--ac); }
 
-		
-        .back-to-top {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: #476BD5;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px; /* Center the icon vertically */
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 2000;
-            transition: opacity 0.3s;
-        }
+    #loader { position: fixed; inset: 0; z-index: 999; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity .5s, visibility .5s; }
+    #loader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+    .dots { display: flex; gap: 10px; }
+    .dots span { width: 10px; height: 10px; border-radius: 50%; animation: bop 1.1s infinite; }
+    .dots span:nth-child(1) { background: var(--ac); }
+    .dots span:nth-child(2) { background: #60a5fa; animation-delay: .18s; }
+    .dots span:nth-child(3) { background: #4ade80; animation-delay: .36s; }
+    @keyframes bop { 0%,100% { transform: scale(.5); opacity: .4; } 50% { transform: scale(1); opacity: 1; } }
 
-        .back-to-top:hover {
-            background-color: #375aa6;
-        }
-		
-		.spinner {
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			border: 4px solid rgba(0, 0, 0, 0.1);
-			border-top-color: #333;
-			animation: spin 2.5s linear infinite;
-			z-index: 1500; /* Ensure it's above other elements */
-		}
-		@keyframes spin {
-				0% {
-					transform: rotate(0deg);
-				}
-				100% {
-					transform: rotate(360deg);
-				}
-			}
-
-
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            p {
-                font-size: 0.875rem;
-            }
-
-            .button {
-                padding: 8px 16px;
-                font-size: 0.875rem;
-                       }
-
-            .back-to-top {
-                font-size: 16px;
-            }
-
-            .loader {
-                font-size: 16px;
-            }
-
-            .loader .item {
-                width: 20px;
-                height: 20px;
-                margin: 2px;
-            }
-			
-        }
-    </style>
+    @media (max-width: 680px) {
+      .main-card { padding: 32px 24px; margin: 1rem; }
+      h1 { font-size: 1.7rem; }
+      .actions { grid-template-columns: repeat(2, 1fr); }
+      .profile-row { gap: 18px; }
+      .avatar { width: 68px; height: 68px; font-size: 32px; }
+      .ip-footer { font-size: 0.65rem; padding: 0.5rem 1rem; gap: 0.5rem; }
+      .viewer iframe { height: 60vh; }
+    }
+    @media (max-width: 480px) {
+      .main-card { padding: 24px 18px; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
 </head>
-
 <body>
-	
-    <div class="loader">
-	
-        <div class="spinner"></div>
-		
+  <div id="loader"><div class="dots"><span></span><span></span><span></span></div></div>
+  
+  <!-- Side Canvases for Animated Dots -->
+  <div class="side-canvas side-left">
+    <canvas id="cvLeft"></canvas>
+  </div>
+  <div class="side-canvas side-right">
+    <canvas id="cvRight"></canvas>
+  </div>
+  
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <button class="theme-btn" id="themeBtn"><i class="fas fa-moon"></i></button>
+
+  <div class="main-card">
+    <div class="profile-row">
+      <div class="avatar">
+        <img src="https://raw.githubusercontent.com/gurleendhiman/resumerepo/refs/heads/main/favicon.svg" alt="Gurleen Dhiman" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user-astronaut\'></i>'">
+      </div>
+      <div class="name-block">
+        <p class="greeting">Open to opportunities · Cambridge, ON</p>
+        <h1><a href="https://ca.linkedin.com/in/gurleendhiman" target="_blank">Gurleen Dhiman</a></h1>
+        <p class="title-line">IT Leader &amp; Cybersecurity Specialist · 15+ Years Experience</p>
+      </div>
     </div>
-	
 
-    <div class="content">
-        <h1>Hello. I'm <a target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none"
-                href='http://ca.linkedin.com/in/gurleendhiman?trk=profile-badge'>Gurleen Dhiman</a></h1>
-        <p>Experienced IT Leader with a strong understanding of IT infrastructure.<br> Certified in Azure, MCIPT, MCP &
-            ITIL.</p>
-        <div class="button-container">
-            <button class="button button1"
-                onclick="document.getElementById('iframeHolder').innerHTML = '<iframe src=\'https://drive.google.com/file/d/1MOUlB4S3d3DnY7Jwf2hR72wHIVkkvLTY/preview\' style=\'width: 100%; height: 100%;\' frameborder=\'0\'></iframe>';">Resume</button>
-            <button class="button button2"
-                onclick="document.getElementById('iframeHolder').innerHTML = '<iframe src=\'https://drive.google.com/file/d/1Y_EHAyNfvOkcV4KUg4FEE8PKg7RZzOqf/preview\' style=\'width: 100%; height: 100%;\' frameborder=\'0\'></iframe>';">Cover
-                Letter</button>
-            <button class="button button3"
-					onclick="window.open('http://ca.linkedin.com/in/gurleendhiman?trk=profile-badge', '_blank')">
-					Linked <i class="fab fa-linkedin"></i>
-				</button>
+    <div class="tags">
+      <span class="tag">Azure Certified</span>
+      <span class="tag">MCITP</span>
+      <span class="tag">ITIL v3</span>
+      <span class="tag">Cybersecurity</span>
+    </div>
 
-            <button class="button button4"
-                onclick="window.open('mailto:GurleenDhiman<gurleendhiman@gmail.com>');"><i class="fa fa-envelope"></i>
-                Email</button>
+    <p class="bio">Accomplished IT leader with over 15 years of experience securing infrastructure, implementing compliance frameworks, and mitigating risk. Proven expertise in cyber defense, vulnerability management, and leading cross-functional teams across Canada, UAE, and India.</p>
+
+    <hr>
+
+    <div class="actions">
+      <button class="btn btn-resume" onclick="openViewer('https://drive.google.com/file/d/1MOUlB4S3d3DnY7Jwf2hR72wHIVkkvLTY/preview','Résumé')">
+        <div class="btn-ico"><i class="fas fa-file-lines"></i></div>
+        <span class="btn-lbl">Résumé</span>
+      </button>
+      <button class="btn btn-cover" onclick="openViewer('https://drive.google.com/file/d/1Y_EHAyNfvOkcV4KUg4FEE8PKg7RZzOqf/preview','Cover Letter')">
+        <div class="btn-ico"><i class="fas fa-envelope-open-text"></i></div>
+        <span class="btn-lbl">Cover Letter</span>
+      </button>
+      <a class="btn btn-linkedin" href="https://ca.linkedin.com/in/gurleendhiman" target="_blank">
+        <div class="btn-ico"><i class="fab fa-linkedin"></i></div>
+        <span class="btn-lbl">LinkedIn</span>
+      </a>
+      <a class="btn btn-email" href="mailto:gurleendhiman@gmail.com">
+        <div class="btn-ico"><i class="fas fa-envelope"></i></div>
+        <span class="btn-lbl">Email</span>
+      </a>
+    </div>
+
+    <div class="viewer" id="viewer">
+      <div class="viewer-bar">
+        <span id="viewerLbl">Document</span>
+        <button onclick="closeViewer()"><i class="fas fa-xmark"></i></button>
+      </div>
+      <iframe id="viewerFrame" src="" title="Document viewer" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div class="chat-section">
+      <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+        <div class="ct-ico"><i class="fas fa-robot"></i></div>
+        <div class="ct-body">
+          <span class="ct-title">Ask Gurleen's Resume Assistant</span>
+          <span class="ct-sub">Ask about experience, certifications, skills, or contact info</span>
         </div>
-		
-        <div id="iframeHolder"></div>
-		<!-- Cloudflare Turnstile CAPTCHA Centered -->
-    <div class="turnstile-container">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABAqFWK-H9Gy3Gxf"></div>
+        <i class="fas fa-chevron-down ct-arr"></i>
+      </button>
+
+      <div class="chat-box" id="chatBox">
+        <div class="chat-inner">
+          <div class="chat-greeting">
+            <div class="g-dot"></div>
+            <span><strong>Resume Assistant</strong> — I know everything from Gurleen's professional background. Ask me anything!</span>
+          </div>
+
+          <div class="chat-msgs" id="chatMsgs">
+            <div class="starters" id="starters">
+              <p class="starter-label">Suggested questions</p>
+              <button class="starter" onclick="sendStarter(this)">What certifications do you hold?</button>
+              <button class="starter" onclick="sendStarter(this)">Tell me about your work experience</button>
+              <button class="starter" onclick="sendStarter(this)">What technical skills do you have?</button>
+              <button class="starter" onclick="sendStarter(this)">How can I contact you?</button>
+              <button class="starter" onclick="sendStarter(this)">What is your location and availability?</button>
+            </div>
+          </div>
+
+          <div class="chat-foot">
+            <textarea class="chat-input" id="chatInput" placeholder="Ask about experience, skills, certifications..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}" oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,110)+'px'"></textarea>
+            <button class="chat-send" id="sendBtn" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    </div>
-		
-		
-		
-	<div class="footer-container" id="footer">
-    <div class="close-btn" onclick="dismissFooter()">×</div>
-    <p id="footer-text">
-        This website collects and stores your IP address for security and analytical purposes. Your public IP address is:
-        <span id="ip-address"></span>
-		
-    </p>
-	<p id="footer-text">
-		
-</div>
+    <p class="card-foot">Cambridge, ON · Remote &amp; hybrid friendly · <a href="https://ca.linkedin.com/in/gurleendhiman" target="_blank">LinkedIn</a></p>
+  </div>
 
-<script type="application/javascript">
+  <!-- IP Footer Notice -->
+  <div class="ip-footer" id="ipFooter">
+    <span><i class="fas fa-shield-alt"></i> This website collects and stores your IP address for security and analytical purposes</span>
+    <span>Your public IP: <span id="ip-address">—</span></span>
+    <div class="footer-close" id="closeFooterBtn">✕</div>
+  </div>
 
-    function getIP(json) {
-        document.getElementById("ip-address").textContent = json.ip;
-    }
+  <script>
+    // ============================================================
+    // ANIMATION CODE FROM myresume.html
+    // ============================================================
+    (function() {
+      const IDS = ['cvLeft', 'cvRight'];
+      const mouse = { x: -9999, y: -9999 };
+      window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+      window.addEventListener('touchmove', e => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }, { passive: true });
+      const PAL = [{r:124,g:106,b:247},{r:96,g:165,b:250},{r:74,g:222,b:128},{r:248,g:113,b:113},{r:251,g:191,b:36}];
 
-    function dismissFooter() {
-        document.querySelector('.footer-container').style.display = 'none';
-    }
+      IDS.forEach(id => {
+        const cv = document.getElementById(id);
+        if (!cv) return;
+        const ctx = cv.getContext('2d');
+        let W=0, H=0, nodes=[];
 
-    document.addEventListener("DOMContentLoaded", function () {
-        var footer = document.querySelector('.footer-container');
-        setTimeout(function () {
-            footer.style.opacity = '1';
-            setTimeout(function () {
-                footer.style.opacity = '0';
-            }, 5000); // Adjust the time before the footer disappears (in milliseconds)
-        }, 2000); // Adjust the delay before the footer appears (in milliseconds)
-    });
-</script>
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-	
-
-
-
-
-    <div class="back-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
-
-
-    <script>
-	
-
-	
-	
-        document.addEventListener("DOMContentLoaded", function () {
-            var footer = document.querySelector('.footer-container');
-            setTimeout(function () {
-                footer.style.opacity = '1';
-                setTimeout(function () {
-                    footer.style.opacity = '0';
-                }, 5000); // Adjust the time before the footer disappears (in milliseconds)
-            }, 2000); // Adjust the delay before the footer appears (in milliseconds)
-        });
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function init() {
+          W = cv.width = cv.offsetWidth;
+          H = cv.height = cv.offsetHeight || window.innerHeight;
+          const n = Math.max(18, Math.floor(W * H / 8000));
+          nodes = Array.from({length:n},(_,i)=>({
+            x:Math.random()*W, y:Math.random()*H,
+            vx:(Math.random()-.5)*.42, vy:(Math.random()-.5)*.42,
+            r:2.2+Math.random()*2.4, c:PAL[i%PAL.length], ph:Math.random()*Math.PI*2
+          }));
         }
+        new ResizeObserver(init).observe(cv.parentElement);
+        init();
 
-        function dismissFooter() {
-            document.querySelector('.footer-container').style.display = 'none';
-        }
+        function frame(t) {
+          ctx.clearRect(0,0,W,H);
+          const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+          const rect = cv.getBoundingClientRect();
+          const mx = mouse.x - rect.left, my = mouse.y - rect.top;
+          const CD = Math.min(W*1.5,180), MD = Math.min(W*1.3,155);
 
-        window.addEventListener('scroll', function () {
-            var button = document.querySelector('.back-to-top');
-            if (window.scrollY > 100) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
+          for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
+            const a=nodes[i],b=nodes[j];
+            const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+            if(d>CD) continue;
+            ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle=`rgba(${a.c.r},${a.c.g},${a.c.b},${(1-d/CD)*(isDark?.2:.11)})`;
+            ctx.lineWidth=.7;ctx.stroke();
+          }
+
+          for(const n of nodes){
+            const dx=n.x-mx,dy=n.y-my,md=Math.sqrt(dx*dx+dy*dy);
+            if(md<MD){
+              ctx.beginPath();ctx.moveTo(mx,my);ctx.lineTo(n.x,n.y);
+              ctx.strokeStyle=`rgba(${n.c.r},${n.c.g},${n.c.b},${(1-md/MD)*(isDark?.65:.35)})`;
+              ctx.lineWidth=.65;ctx.stroke();
             }
-        });
+            const pulse=.88+.12*Math.sin(t*.001+n.ph);
+            const boost=md<MD?(1-md/MD):0;
+            ctx.beginPath();ctx.arc(n.x,n.y,n.r*pulse*(1+boost*.75),0,Math.PI*2);
+            ctx.fillStyle=`rgba(${n.c.r},${n.c.g},${n.c.b},${(isDark?.48:.36)+boost*.52})`;
+            ctx.fill();
+            if(md<90&&md>0){const f=(90-md)/90*.85;n.vx+=dx/md*f;n.vy+=dy/md*f;}
+            n.vx*=.991;n.vy*=.991;n.x+=n.vx;n.y+=n.vy;
+            if(n.x<-12)n.x=W+12;if(n.x>W+12)n.x=-12;
+            if(n.y<-12)n.y=H+12;if(n.y>H+12)n.y=-12;
+          }
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      });
+    })();
 
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                setTimeout(function () {
-                    document.querySelector('.loader').style.display = 'none';
-                    document.querySelector('.content').style.display = 'block';
-                    document.querySelector('.footer-container').style.display = 'block';
-                }, 500); // Adjust timing as necessary
-            }, 100); // Adjust timing as necessary
-        });
-    </script>
-	 
+    // ============================================================
+    // RESUME KNOWLEDGE BASE
+    // ============================================================
+    const resumeData = {
+      name: "Gurleen Dhiman",
+      location: "Cambridge, Ontario, Canada",
+      phone: "(647) 686-2120",
+      email: "gurleendhiman@gmail.com",
+      linkedin: "ca.linkedin.com/in/gurleendhiman",
+      summary: "Accomplished IT Leader with 15+ years in IT and Cybersecurity. Skilled in securing IT infrastructures, compliance frameworks (NIST, ISO), and risk mitigation.",
+      certifications: [
+        "Microsoft Certified: Azure Fundamentals (Feb 2021)",
+        "ITIL v3 Foundation in IT Service Management (Mar 2015)",
+        "MCITP – Microsoft Certified IT Professional (Nov 2012)",
+        "MCTS – Exchange 2010 (Mar 2012)",
+        "MCTS – Windows 7 Configuration (Nov 2010)",
+        "MCSA – Windows Server 2008 Active Directory (Apr 2011)"
+      ],
+      skills: {
+        endpoint: "Microsoft Defender, Sentinel One, Field Effect MDR",
+        network: "FortiGate, Sophos XG, Cisco ASA, Palo Alto, VPN, IDS/IPS, SD-WAN, VLANs",
+        identity: "Azure AD, Intune, Conditional Access, MFA, SSO",
+        cloud: "Microsoft Azure, AWS IAM, O365, hybrid cloud",
+        backup: "Veeam, Datto, DR planning and validation",
+        virtualization: "VMware, Hyper-V, ESX, Windows Server, MDM, G-Suite"
+      },
+      experience: [
+        { title: "Technology Alignment Specialist", company: "MSP Corp.", location: "Guelph, ON", period: "Oct 2021 – Present", details: "Network security, NIST-aligned audits, Intune/MDM/Conditional Access, Zero Trust, vulnerability scanning, DR exercises." },
+        { title: "Business Operations Support Lead", company: "TD Bank", location: "Mississauga, ON", period: "Jun 2021 – Oct 2021", details: "SLA management, work standards, asset maintenance, knowledge transfer." },
+        { title: "IT Manager", company: "Unicus Technologies", location: "Dubai, UAE", period: "Feb 2016 – Apr 2020", details: "Infrastructure planning, MSP support, WAN/SD-WAN, firewall/VPN/endpoint security, GDPR compliance." },
+        { title: "Manager IT Services", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2015 – Jan 2016", details: "ISO 27001 ISMS, risk assessments, HIPAA support, ITIL training." },
+        { title: "Associate Specialist Systems", company: "Roquette Riddhi Siddhi", location: "Ahmedabad, India", period: "Jul 2014 – Feb 2015", details: "Server/Network/ERP monitoring, Exchange Server, O365 security." },
+        { title: "Sr. System Administrator", company: "Analytix Business Solutions", location: "Ahmedabad, India", period: "Feb 2011 – Jul 2014", details: "Active Directory, Group Policy, O365 migrations for 15+ clients, support for 200+ users." }
+      ],
+      education: [
+        "ACHNP – Advanced Diploma in Hardware & Networking Professional, IIHT Ahmedabad (2009–2011)",
+        "Bachelor of Commerce (WES Canada assessed), Maharaja Sayajirao University (2001–2004)"
+      ],
+      availability: "Open to full-time, contract, remote, hybrid, and on-site roles in Canada."
+    };
+
+    function getBotResponse(question) {
+      const q = question.toLowerCase().trim();
+      if (q.includes('certif')) return `📜 ${resumeData.name} holds: ${resumeData.certifications.join(', ')}.`;
+      if (q.includes('experience')) {
+        let expText = `${resumeData.name} has ${resumeData.experience.length} roles:\n`;
+        resumeData.experience.forEach(exp => { expText += `\n• ${exp.title} at ${exp.company} (${exp.period}): ${exp.details}`; });
+        return expText;
+      }
+      if (q.includes('skill')) return `⚙️ Technical Skills:\n• Endpoint: ${resumeData.skills.endpoint}\n• Network: ${resumeData.skills.network}\n• Identity: ${resumeData.skills.identity}\n• Cloud: ${resumeData.skills.cloud}`;
+      if (q.includes('contact')) return `📫 Contact: ${resumeData.email} | ${resumeData.phone} | LinkedIn: ${resumeData.linkedin}`;
+      if (q.includes('location')) return `📍 ${resumeData.name} is based in ${resumeData.location}. ${resumeData.availability}`;
+      return `🤔 Try asking about: certifications, experience, skills, contact, location, or availability.`;
+    }
+
+    // Chat UI Logic
+    let chatOpen = false, busy = false;
+    function toggleChat() {
+      chatOpen = !chatOpen;
+      document.getElementById('chatBox').classList.toggle('open', chatOpen);
+      document.getElementById('chatToggle').classList.toggle('open', chatOpen);
+      if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 300);
+    }
+    function sendStarter(btn) {
+      const startersDiv = document.getElementById('starters');
+      if (startersDiv) startersDiv.remove();
+      document.getElementById('chatInput').value = btn.textContent;
+      sendMsg();
+    }
+    function addMsg(role, text) {
+      const wrap = document.getElementById('chatMsgs');
+      const row = document.createElement('div');
+      row.className = `msg ${role}`;
+      row.innerHTML = `<div class="msg-av"><i class="fas fa-${role === 'ai' ? 'robot' : 'user'}"></i></div><div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>`;
+      wrap.appendChild(row);
+      wrap.scrollTop = wrap.scrollHeight;
+    }
+    function showTyping() {
+      const wrap = document.getElementById('chatMsgs');
+      const row = document.createElement('div');
+      row.id = 'typingRow'; row.className = 'msg ai';
+      row.innerHTML = `<div class="msg-av"><i class="fas fa-robot"></i></div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+      wrap.appendChild(row);
+      wrap.scrollTop = wrap.scrollHeight;
+    }
+    function hideTyping() { const t = document.getElementById('typingRow'); if (t) t.remove(); }
+    async function sendMsg() {
+      if (busy) return;
+      const inp = document.getElementById('chatInput');
+      const text = inp.value.trim();
+      if (!text) return;
+      const startersDiv = document.getElementById('starters');
+      if (startersDiv) startersDiv.remove();
+      inp.value = ''; inp.style.height = 'auto';
+      addMsg('user', text);
+      busy = true; document.getElementById('sendBtn').disabled = true; showTyping();
+      setTimeout(() => {
+        hideTyping();
+        addMsg('ai', getBotResponse(text));
+        busy = false; document.getElementById('sendBtn').disabled = false; inp.focus();
+      }, 400);
+    }
+
+    // Viewer Functions
+    function openViewer(src, lbl) {
+      const v = document.getElementById('viewer');
+      document.getElementById('viewerLbl').textContent = lbl;
+      document.getElementById('viewerFrame').src = src;
+      v.classList.add('open');
+      setTimeout(() => v.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+    }
+    function closeViewer() {
+      const v = document.getElementById('viewer');
+      v.classList.remove('open');
+      setTimeout(() => document.getElementById('viewerFrame').src = '', 500);
+    }
+
+    // Theme Toggle
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    let dark = localStorage.getItem('theme') !== 'light';
+    if (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches) dark = false;
+    applyTheme();
+    themeBtn.addEventListener('click', () => { dark = !dark; localStorage.setItem('theme', dark ? 'dark' : 'light'); applyTheme(); });
+    function applyTheme() {
+      html.setAttribute('data-theme', dark ? 'dark' : 'light');
+      themeBtn.innerHTML = dark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    }
+
+    // IP Footer Logic
+    const ipFooter = document.getElementById('ipFooter');
+    const closeFooter = document.getElementById('closeFooterBtn');
+    const ipSpan = document.getElementById('ip-address');
+    
+    fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+      .then(data => { if (ipSpan) ipSpan.textContent = data.ip; })
+      .catch(() => { if (ipSpan) ipSpan.textContent = 'unavailable'; });
+    
+    let footerTimeout;
+    function showFooter() {
+      ipFooter?.classList.add('show');
+      footerTimeout = setTimeout(() => ipFooter?.classList.remove('show'), 8000);
+    }
+    closeFooter?.addEventListener('click', () => {
+      ipFooter?.classList.remove('show');
+      clearTimeout(footerTimeout);
+      sessionStorage.setItem('footerDismissed', 'true');
+    });
+    if (sessionStorage.getItem('footerDismissed') !== 'true') {
+      setTimeout(showFooter, 2500);
+    }
+
+    // Loader
+    window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('gone'), 500));
+  </script>
 </body>
-
 </html>
-
